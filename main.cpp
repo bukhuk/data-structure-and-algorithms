@@ -1,4 +1,5 @@
 #include <iostream>
+#include "FenwichTree/FenwickTree.h"
 
 int main() {
 
