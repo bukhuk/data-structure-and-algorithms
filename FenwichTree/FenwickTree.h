@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 template <typename T>
 class FenwickTree {
    public:
@@ -11,6 +13,16 @@ class FenwickTree {
         array_{new T[array_size_ + 1]},
         data_{new T[array_size_ + 1]} {
         std::fill(array_ + 1, array_ + array_size_ + 1, value);
+        Initialize();
+    }
+
+    FenwickTree(const std::vector<T>& array) :
+        array_size_{array.size()},
+        array_{new T[array_size_ + 1]},
+        data_{new T[array_size_ + 1]} {
+        for (size_t i = 1; i <= array_size_; i++) {
+            *std::next(array_, i) = array[i - 1];
+        }
         Initialize();
     }
 
